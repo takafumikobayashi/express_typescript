@@ -3,6 +3,8 @@
     "module": "commonjs",
     "target": "es2017",
     "sourceMap": true,
+    "rootDir": "./src",
+    "baseUrl": "./src",
     "outDir": "./dist",
     "types" : ["node"]
   },
