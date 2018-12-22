@@ -1,4 +1,6 @@
-var express = require('express');
+import * as express from "express";
+
+//var express = require('express');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
@@ -21,7 +23,7 @@ app.listen('8080')
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   res.header('Content-Type', 'application/json; charset=utf-8')
-  res.status = 404
+  res.status(404);
   var response = {code:9, message:'Not Fonund'}
   res.send(response);
 });
