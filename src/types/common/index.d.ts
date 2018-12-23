@@ -1,11 +1,12 @@
-
 declare module 'commonResJson'{
-    interface OK {
+
+    interface Header {
         code: number;
         message: string;
         app: string;
         ver: string;
     }
+
 }
 
 

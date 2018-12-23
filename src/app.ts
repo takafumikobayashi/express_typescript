@@ -1,4 +1,6 @@
 import * as express from 'express';
+import { SystemConst } from './conf/const';
+import * as resjson from 'commonResJson'
 
 //var express = require('express');
 var cookieParser = require('cookie-parser');
@@ -18,13 +20,20 @@ app.use(cookieParser());
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
-app.listen('8080')
+app.listen('3000')
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   res.header('Content-Type', 'application/json; charset=utf-8')
   res.status(404);
-  var response = {code:9, message:'Not Fonund'}
+  
+  const response: resjson.Header = {
+    code: SystemConst.RES_NG,
+    message: 'Not Fonund',
+    app: 'app',
+    ver: null
+  };
+  
   res.send(response);
 });
 
@@ -37,7 +46,14 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.header('Content-Type', 'application/json; charset=utf-8')
-  var response = {code:9, message:'Internal Server Error!'}
+
+  const response: resjson.Header = {
+    code: SystemConst.RES_NG,
+    message: 'Internal Server Error!',
+    app: 'app',
+    ver: null
+  };
+
   res.send(response);
 });
 
