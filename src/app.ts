@@ -26,14 +26,14 @@ app.listen('3000')
 app.use(function(req, res, next) {
   res.header('Content-Type', 'application/json; charset=utf-8')
   res.status(404);
-  
+
   const response: resjson.Header = {
     code: SystemConst.RES_NG,
     message: 'Not Fonund',
     app: 'app',
     ver: null
   };
-  
+
   res.send(response);
 });
 
