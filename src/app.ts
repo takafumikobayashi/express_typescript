@@ -2,14 +2,28 @@ import * as express from 'express';
 import { SystemConst } from './conf/const';
 import * as resjson from 'commonResJson'
 
-//var express = require('express');
+//mongo DB
+var model = require('./conf/model');
+
+//BasicAuth
+var basicAuth = require('basic-auth-connect');
+
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+//router App
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+
+
+// Authrorization
+app.use(basicAuth(function(user, password) {
+  console.log(model.BasicAuth.find({userid: user}))
+  return password === model.BasicAuth.find({userid: user},{password:1});
+}));
+
 
 // view engine setup
 app.use(logger('dev'));
