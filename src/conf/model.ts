@@ -9,9 +9,9 @@ var user = new Schema({
 });
 
 // MongoDBへの接続
-mongoose.connect('mongodb://52.195.9.101:27017/verdb');
+mongoose.connect('mongodb://localhost/vervb', { useNewUrlParser: true });
 
 // スキーマからモデルをコンパイルし、モデルをエクスポートする
-exports.BasicAuth = mongoose.model('BasicAuth', user);
+exports.BasicAuth = mongoose.model('user', user);
 
 

@@ -4,9 +4,10 @@ import * as resjson from 'commonResJson'
 
 //mongo DB
 var model = require('./conf/model');
+var BasicAuth = model.BasicAuth;
 
 //BasicAuth
-var basicAuth = require('basic-auth-connect');
+//var basicAuth = require('basic-auth-connect');
 
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -17,12 +18,16 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+BasicAuth.find({userid: "kobayashi"}, function(err, docs){
+  console.log(docs[0])
+});
+
 
 // Authrorization
-app.use(basicAuth(function(user, password) {
-  console.log(model.BasicAuth.find({userid: user}))
-  return password === model.BasicAuth.find({userid: user},{password:1});
-}));
+/* app.use(basicAuth(function(user, password) {
+  console.log(model.find({userid: user}), ['password'])
+  return password === model.find({userid: user},{password:1});
+})); */
 
 
 // view engine setup
