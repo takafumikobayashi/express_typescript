@@ -1,10 +1,7 @@
 import * as express from 'express';
 import { SystemConst } from './conf/const';
 import * as resjson from 'commonResJson'
-
-//mongo DB
-var model = require('./conf/model');
-var BasicAuth = model.BasicAuth;
+import {MongoConnect} from './conf/model';
 
 //BasicAuth
 //var basicAuth = require('basic-auth-connect');
@@ -18,12 +15,13 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
-BasicAuth.find({userid: "kobayashi"}, function(err, docs){
-  console.log(docs[0])
-});
-
-
 // Authrorization
+let mongo = new MongoConnect()
+mongo.connect()
+mongo.model()
+
+
+
 /* app.use(basicAuth(function(user, password) {
   console.log(model.find({userid: user}), ['password'])
   return password === model.find({userid: user},{password:1});
