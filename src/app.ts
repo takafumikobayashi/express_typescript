@@ -2,14 +2,16 @@ import * as express from 'express';
 import { SystemConst } from './conf/const';
 import * as resjson from 'commonResJson'
 
-//var express = require('express');
+
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+//router App
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+
 
 // view engine setup
 app.use(logger('dev'));
@@ -26,14 +28,14 @@ app.listen('3000')
 app.use(function(req, res, next) {
   res.header('Content-Type', 'application/json; charset=utf-8')
   res.status(404);
-  
+
   const response: resjson.Header = {
     code: SystemConst.RES_NG,
     message: 'Not Fonund',
     app: 'app',
     ver: null
   };
-  
+
   res.send(response);
 });
 

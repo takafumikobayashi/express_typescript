@@ -7,7 +7,7 @@ export namespace SystemConst {
 
     /** サーバー */
     export namespace Server {
-        /** IPアドレス */
+        /** hostname */
         export const APP_HOST = 'localhost';
     }
 }
